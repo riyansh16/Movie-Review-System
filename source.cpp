@@ -9,7 +9,7 @@ class MovieReview{
         map<string,pair<int,int>>moviereview;
         map<int,pair<int,int>>yearreview;
         map<string,int>rating;
-        int currentyear=2021;
+        int currentyear;
         static bool cmp(pair<string, int>& a, pair<string, int>& b){
 	        return a.second < b.second;
         }
@@ -37,6 +37,9 @@ class MovieReview{
             moviereview.clear();
             yearreview.clear();
             rating.clear();
+	    time_t t = time(NULL);
+	    tm* timePtr = localtime(&t);
+	    currentyear=timePtr->tm_year+1900;
         }
         
         void AddMovie(string Movie, int Year, string Genre){
